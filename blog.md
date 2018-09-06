@@ -3,6 +3,8 @@
 1. create and query nodes for all images
 2.
 
+# fullsize image with gatsby
+
 # pulling exif metadata into gatsby
 
 @idea:

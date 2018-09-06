@@ -1,13 +1,18 @@
 import React from 'react'
 import { Container, Flex, Box, Caps } from 'rebass'
-import Layout from '../components/layout'
+import { Link } from 'gatsby'
 import Img from 'gatsby-image'
+import Layout from '../components/layout'
 
 class Index extends React.Component {
+  state = {
+    fullscreen: false,
+  }
+
   render() {
     const { data } = this.props
     const images = data.allImageSharp.edges
-    //map over all other post types: images, markdown, audio, video, and render
+    const { fullscreen } = this.state
 
     return (
       <Layout>
@@ -17,7 +22,9 @@ class Index extends React.Component {
               const { metadata } = image.node.fields
               return (
                 <Box key={image.node.id} mt={[4, 5]} mb={[4, 5]}>
-                  <Img sizes={image.node.sizes} />
+                  <Link to={image.node.fields.slug}>
+                    <Img sizes={image.node.sizes} />
+                  </Link>
                   <Caps mt={3}>{metadata.date}</Caps>
                   <Caps mt={3}>
                     {metadata.latRef}
@@ -46,6 +53,7 @@ export const indexQuery = graphql`
             ...GatsbyImageSharpSizes
           }
           fields {
+            slug
             metadata {
               date
               latRef
