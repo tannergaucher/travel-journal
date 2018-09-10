@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Flex, Box, Caps } from 'rebass'
+import { Container, Flex, Box, Caps, Card } from 'rebass'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
@@ -21,7 +21,12 @@ class Index extends React.Component {
             {images.map(image => {
               const { metadata } = image.node.fields
               return (
-                <Box key={image.node.id} mt={[4, 5]} mb={[4, 5]}>
+                <Card
+                  key={image.node.id}
+                  mt={[4, 5]}
+                  mb={[4, 5]}
+                  boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
+                >
                   <Link to={image.node.fields.slug}>
                     <Img sizes={image.node.sizes} />
                   </Link>
@@ -31,7 +36,7 @@ class Index extends React.Component {
                     {metadata.lat} {metadata.lonRef}
                     {metadata.lon}
                   </Caps>
-                </Box>
+                </Card>
               )
             })}
           </Flex>

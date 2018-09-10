@@ -10,7 +10,10 @@ injectGlobal`
 * { box-sizing: border-box; }
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 html { font-family: 'Roboto Mono', monospace;}
-body { margin: 0; }
+body { 
+  margin: 0;
+  background: #fafafa;
+   }
 `
 
 const Layout = ({ children }) => (
