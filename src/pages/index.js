@@ -1,18 +1,13 @@
 import React from 'react'
-import { Container, Flex, Box, Caps, Card } from 'rebass'
+import { Container, Flex, Caps, Card } from 'rebass'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
 
 class Index extends React.Component {
-  state = {
-    fullscreen: false,
-  }
-
   render() {
     const { data } = this.props
     const images = data.allImageSharp.edges
-    const { fullscreen } = this.state
 
     return (
       <Layout>
@@ -27,9 +22,9 @@ class Index extends React.Component {
                   mb={[4, 5]}
                   boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
                 >
-                  <Link to={image.node.fields.slug}>
-                    <Img sizes={image.node.sizes} />
-                  </Link>
+                  {/* <Link to={image.node.fields.slug}> */}
+                  <Img sizes={image.node.sizes} />
+                  {/* </Link> */}
                   <Caps mt={3}>{metadata.date}</Caps>
                   <Caps mt={3}>
                     {metadata.latRef}

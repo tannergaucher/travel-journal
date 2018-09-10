@@ -16,8 +16,7 @@ const Wrapper = styled.div`
 `
 
 export default ({ data }) => {
-  console.log(data)
-
+  // console.log(data)
   return (
     <Container>
       <Wrapper>

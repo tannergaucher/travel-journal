@@ -12,7 +12,6 @@ injectGlobal`
 html { font-family: 'Roboto Mono', monospace;}
 body { 
   margin: 0;
-  background: #fafafa;
    }
 `
 

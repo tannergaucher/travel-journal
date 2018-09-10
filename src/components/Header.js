@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const StyledToolbar = styled(Toolbar)`
   /* background: linear-gradient(to right, #e7d2b3, #81816e); */
-  background: white;
+  background: #fafafa;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 `
 
