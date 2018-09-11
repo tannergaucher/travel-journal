@@ -12,7 +12,9 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`,
   ],
 }
