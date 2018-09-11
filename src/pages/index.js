@@ -22,9 +22,9 @@ class Index extends React.Component {
                   mb={[4, 5]}
                   boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
                 >
-                  {/* <Link to={image.node.fields.slug}> */}
-                  <Img sizes={image.node.sizes} />
-                  {/* </Link> */}
+                  <Link to={image.node.fields.slug}>
+                    <Img sizes={image.node.sizes} />
+                  </Link>
                   <Caps mt={3}>{metadata.date}</Caps>
                   <Caps mt={3}>
                     {metadata.latRef}
