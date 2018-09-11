@@ -45,7 +45,7 @@ export default Index
 
 export const indexQuery = graphql`
   query {
-    allImageSharp {
+    allImageSharp(sort: { fields: fields___metadata___date, order: DESC }) {
       edges {
         node {
           id
