@@ -16,11 +16,19 @@ const Wrapper = styled.div`
 `
 
 export default ({ data }) => {
-  // console.log(data)
   return (
     <Container>
       <Wrapper>
-        <Img sizes={data.imageSharp.sizes} />
+        <Img
+          sizes={data.imageSharp.sizes}
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            maxWidth: '100%',
+            maxHeight: '100%',
+          }}
+        />
       </Wrapper>
     </Container>
   )
