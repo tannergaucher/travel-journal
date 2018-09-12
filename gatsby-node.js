@@ -1,8 +1,7 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
-
 const fastExif = require('fast-exif')
-const getColors = require('get-image-colors')
+// const getColors = require('get-image-colors')
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions

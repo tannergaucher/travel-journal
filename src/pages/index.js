@@ -28,7 +28,8 @@ class Index extends React.Component {
                   <Caps mt={3}>{metadata.date}</Caps>
                   <Caps mt={3}>
                     {metadata.latRef}
-                    {metadata.lat} {metadata.lonRef}
+                    {metadata.lat}
+                    {metadata.lonRef}
                     {metadata.lon}
                   </Caps>
                 </Card>
