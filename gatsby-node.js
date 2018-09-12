@@ -18,6 +18,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
           lonRef: exifData.gps.GPSLongitudeRef,
           lon: exifData.gps.GPSLongitude,
         }
+
         //make metadata data queryable
         createNodeField({
           node,

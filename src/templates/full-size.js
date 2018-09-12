@@ -6,40 +6,33 @@ import styled from 'styled-components'
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-
-const Wrapper = styled.div`
-  width: 1400px;
 `
 
 export default ({ data }) => {
   return (
     <Container>
-      <Wrapper>
-        <Img
-          sizes={data.imageSharp.sizes}
-          style={{
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            maxWidth: '100%',
-            maxHeight: '100%',
-          }}
-        />
-      </Wrapper>
+      <Img
+        sizes={data.imageSharp.resolutions}
+        style={{
+          position: 'absolute',
+          top: 0,
+          width: '100%',
+          height: '100%',
+        }}
+      />
+
+      {/* Other aspect ratio */}
+      {/* <Img sizes={data.imageSharp.resolutions} /> */}
     </Container>
   )
 }
 
-export const query = graphql`
-  query($slug: String!) {
-    imageSharp(fields: { slug: { eq: $slug } }) {
-      sizes(maxHeight: 800, maxWidth: 1400) {
-        ...GatsbyImageSharpSizes
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query($slug: String!) {
+//     imageSharp(fields: { slug: { eq: $slug } }) {
+//       sizes(maxWidth: 1400, maxHeight: 800) {
+//         ...GatsbyImageSharpSizes
+//       }
+//     }
+//   }
+// `

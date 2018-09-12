@@ -1,8 +1,14 @@
 import React from 'react'
-import { Container, Flex, Caps, Card } from 'rebass'
+import styled from 'styled-components'
+import { Container as container, Flex, Caps, Card } from 'rebass'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
+
+const Container = styled(container)`
+  padding-left: 0px;
+  padding-right: 0px;
+`
 
 class Index extends React.Component {
   render() {
