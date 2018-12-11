@@ -1,14 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Container as container, Flex, Caps, Card } from 'rebass'
+import { Container as container, Flex, Card } from 'rebass'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
+import { graphql } from 'gatsby'
+import kebabCase from 'lodash/kebabCase'
 
 const Container = styled(container)`
   padding-left: 0px;
   padding-right: 0px;
 `
+
+function formatDate(dateTime) {
+  return dateTime.split('T')[0]
+}
+
+function formatTime(dateTime) {
+  const time = dateTime.split('T')[1].split('.')
+  return time[0]
+}
 
 class Index extends React.Component {
   render() {
@@ -31,13 +42,15 @@ class Index extends React.Component {
                   <Link to={image.node.fields.slug}>
                     <Img sizes={image.node.sizes} />
                   </Link>
-                  <Caps mt={3}>{metadata.date}</Caps>
-                  <Caps mt={3}>
-                    {metadata.latRef}
-                    {metadata.lat}
-                    {metadata.lonRef}
-                    {metadata.lon}
-                  </Caps>
+                  <Flex justifyContent="space-around">
+                    <h6>{formatDate(image.node.fields.dateTime)}</h6>
+                    <h6>{formatTime(image.node.fields.dateTime)}</h6>
+                    <Link
+                      to={`/countries/${kebabCase(image.node.fields.country)}`}
+                    >
+                      <h6>{image.node.fields.country}</h6>
+                    </Link>
+                  </Flex>
                 </Card>
               )
             })}
@@ -52,7 +65,7 @@ export default Index
 
 export const indexQuery = graphql`
   query {
-    allImageSharp(sort: { fields: fields___metadata___date, order: DESC }) {
+    allImageSharp(sort: { fields: fields___dateTime, order: DESC }) {
       edges {
         node {
           id
@@ -61,13 +74,8 @@ export const indexQuery = graphql`
           }
           fields {
             slug
-            metadata {
-              date
-              latRef
-              lat
-              lonRef
-              lon
-            }
+            dateTime
+            country
           }
         }
       }
