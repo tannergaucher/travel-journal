@@ -5,13 +5,12 @@ import Container from '../components/styles/Container'
 import kebabCase from 'lodash/kebabCase'
 import Link from '../components/styles/Link'
 
-const Place = ({ data }) => {
-  // console.log(data)
+const Places = ({ data }) => {
   const { group } = data.allImageSharp
   return (
     <Layout>
       <Container>
-        <h1>Place</h1>
+        <p>Places</p>
         <ul>
           {group.map(country => {
             console.log(country)
@@ -31,7 +30,7 @@ const Place = ({ data }) => {
   )
 }
 
-export default Place
+export default Places
 
 export const countriesQuery = graphql`
   query {

@@ -4,7 +4,7 @@ import { space } from 'styled-system'
 
 const MyLink = styled(Link)`
   ${space};
-  color: ${props => props.theme.href};
+  color: ${props => props.theme.primaryText};
   text-decoration: none;
 `
 

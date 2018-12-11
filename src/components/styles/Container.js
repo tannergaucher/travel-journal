@@ -1,9 +1,8 @@
 import styled from 'styled-components'
+import { space } from 'styled-system'
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  ${space};
+  width: 800px;
 `
 export default Container

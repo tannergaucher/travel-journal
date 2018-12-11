@@ -12,7 +12,9 @@ const StyledNavigation = styled.div`
 
 const Navigation = () => (
   <StyledNavigation mt={[4]}>
-    <Link to="/">Photo Journal</Link>
+    <Link to="/">
+      <h4>Photo Journal</h4>
+    </Link>
   </StyledNavigation>
 )
 

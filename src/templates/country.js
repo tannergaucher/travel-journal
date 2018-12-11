@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import Layout from '../components/layout'
 import Container from '../components/styles/Container'
+import Link from '../components/styles/Link'
 
 const Wrapper = styled.div`
   width: 600px;
@@ -15,11 +16,15 @@ const Country = ({ data, pageContext }) => {
     <h1>
       <Layout>
         <Container>
-          <h1>{pageContext.name}</h1>
+          <p>{pageContext.name}</p>
           <Wrapper>
             {data.allImageSharp.edges.map(image => {
               console.log(image)
-              return <Img sizes={image.node.sizes} />
+              return (
+                <Link to={image.node.fields.slug}>
+                  <Img sizes={image.node.sizes} />
+                </Link>
+              )
             })}
           </Wrapper>
         </Container>

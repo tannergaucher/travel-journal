@@ -2,8 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import { injectGlobal, ThemeProvider } from 'styled-components'
+import styled from 'styled-components'
 
 import Navigation from './Navigation'
+import { theme } from '../theme'
 
 injectGlobal`
 * { box-sizing: border-box; }
@@ -11,13 +13,15 @@ injectGlobal`
 html { font-family: 'Roboto Mono', monospace;}
 body { 
   margin: 0;
+  color: ${theme.primaryText};
+  
    }
 `
 
-const theme = {
-  primaryText: 'black',
-  href: 'grey',
-}
+const Inner = styled.div`
+  display: flex;
+  justify-content: center;
+`
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -34,7 +38,7 @@ const Layout = ({ children }) => (
       <ThemeProvider theme={theme}>
         <>
           <Navigation />
-          {children}
+          <Inner>{children}</Inner>
         </>
       </ThemeProvider>
     )}

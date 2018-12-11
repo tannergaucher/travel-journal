@@ -42,7 +42,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
         const lng = convertDMStoDD(
           formatCoords(gps.GPSLongitude, gps.GPSLongitudeRef)
         )
-        const coords = [lat, lng]
+        // const coords = [lat, lng]
         const dateTime = exifData.exif.DateTimeOriginal
 
         googleMapsClient
@@ -66,8 +66,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
         createNodeField({
           node,
-          name: 'coords',
-          value: coords,
+          name: 'geo',
+          value: {
+            lat,
+            lng,
+          },
         })
 
         createNodeField({
@@ -101,6 +104,10 @@ exports.createPages = ({ graphql, actions }) => {
             node {
               fields {
                 slug
+                geo {
+                  lat
+                  lng
+                }
               }
             }
           }
@@ -108,8 +115,27 @@ exports.createPages = ({ graphql, actions }) => {
       }
     `)
       .then(result => {
-        // dynamically create a full size image page for each image node
+        // @PAGINATION
+        const posts = result.data.allImageSharp.edges
+        const postsPerPage = 10
+        const numPages = Math.ceil(posts.length / postsPerPage)
+        console.log('numPages', numPages, postsPerPage, 'postsPerpage')
+        Array.from({ length: numPages }).forEach((_, i) => {
+          createPage({
+            path: i === 0 ? `/` : `/${i}`,
+            component: path.resolve(`./src/pages/index.js`),
+            context: {
+              limit: postsPerPage,
+              skip: i * postsPerPage,
+              numPages,
+            },
+          })
+        })
+
+        // dynamically create pages for each image from templates
         result.data.allImageSharp.edges.forEach(({ node }) => {
+          // create full size image pages
+
           createPage({
             path: node.fields.slug,
             component: path.resolve(`./src/templates/full-size.js`),
@@ -117,8 +143,21 @@ exports.createPages = ({ graphql, actions }) => {
               slug: node.fields.slug,
             },
           })
+
+          // create google map page ( to be cenetered on coords)
+          const { lat, lng } = node.fields.geo
+          createPage({
+            path: `/map/${lat.toPrecision(3)}-${lng.toPrecision(3)}`,
+            component: path.resolve(`./src/templates/map.js`),
+            context: {
+              coords: {
+                lat,
+                lng,
+              },
+            },
+          })
         })
-        // create a page for each country node
+        // dynamically create page for each country
         result.data.allImageSharp.group.map(country => {
           const name = country.fieldValue
           createPage({

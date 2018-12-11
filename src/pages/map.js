@@ -1,15 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
+// import React from 'react'
+// import styled from 'styled-components'
 
-import Layout from '../components/layout'
-import Container from '../components/styles/Container'
+// import Layout from '../components/layout'
+// import Container from '../components/styles/Container'
 
-const Map = () => (
-  <Layout>
-    <Container>
-      <h1>Map</h1>
-    </Container>
-  </Layout>
-)
+// const Map = props => (
+//   <Layout>
+//     <Container>
+//       <h1>Map</h1>
+//     </Container>
+//   </Layout>
+// )
 
-export default Map
+// export default Map
