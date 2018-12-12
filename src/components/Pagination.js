@@ -13,9 +13,9 @@ const Pagination = ({ numPages }) => (
     <Link to="/places">Places</Link>
     {Array.from({ length: numPages - 1 }).map((_, i) => {
       return (
-        <p>
-          <Link to={`/${i + 1}`}>{i + 1}</Link>
-        </p>
+        <Link to={`/${i + 1}`}>
+          <p>{i + 1}</p>
+        </Link>
       )
     })}
     <Link to="/">Dates</Link>

@@ -1,24 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
 import Img from 'gatsby-image'
 import { Card } from 'rebass'
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
-import kebabCase from 'lodash/kebabCase'
 import formatDate from '../lib/formatDate'
 import formatTime from '../lib/formatTime'
 
 import Pagination from '../components/Pagination'
 import Link from '../components/styles/Link'
 import Container from '../components/styles/Container'
-
-const CardText = styled.h6`
-  text-transform: uppercase;
-  padding: 0;
-  margin: 0;
-  margin-right: ${props => props.theme.sm};
-  letter-spacing: 2px;
-`
 
 class Index extends React.Component {
   render() {

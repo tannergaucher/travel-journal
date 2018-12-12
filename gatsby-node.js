@@ -3,6 +3,10 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const fastExif = require('fast-exif')
 const _ = require('lodash')
 
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 const googleMapsClient = require('@google/maps').createClient({
   key: process.env.GOOGLE_GEOCODE_API,
   Promise: Promise,
@@ -135,7 +139,6 @@ exports.createPages = ({ graphql, actions }) => {
         // dynamically create pages for each image from templates
         result.data.allImageSharp.edges.forEach(({ node }) => {
           // create full size image pages
-
           createPage({
             path: node.fields.slug,
             component: path.resolve(`./src/templates/full-size.js`),
