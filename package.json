@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Tanner Gaucher <TannerMichaelGaucher@gmail.com>",
   "dependencies": {
+    "@google/maps": "^0.5.5",
     "babel-plugin-styled-components": "^1.6.4",
     "fast-exif": "^1.0.1",
     "gatsby": "next",
@@ -15,11 +16,11 @@
     "gatsby-plugin-styled-components": "next",
     "gatsby-source-filesystem": "^1.5.39",
     "gatsby-transformer-sharp": "^1.6.27",
-    "get-image-colors": "^1.8.1",
+    "lodash": "^4.17.11",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-helmet": "^5.2.0",
-    "rebass": "^2.1.0",
+    "rebass": "^3.0.0",
     "styled-components": "^3.4.5"
   },
   "keywords": [
